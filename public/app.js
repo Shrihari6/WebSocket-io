@@ -24,7 +24,8 @@ socket.on("chat-message", data => {  // Listen for incoming chat messages from s
   const div=document.createElement("div");
  // Create a new div element for the received message 
  
-  div.textContent=`[${data.time}] user@${data.id.slice(0,5)}: ${data.message}`;  // Format received message with timestamp and sender ID 
+  div.textContent=`[${getISTTime()}] user@${data.id.slice(0,5)}: ${data.message}`;  // Format received message with timestamp and sender ID 
+ 
   chat.appendChild(div);  // Append received message to chat display area
   chat.scrollTop=chat.scrollHeight;
 });
@@ -32,3 +33,14 @@ socket.on("chat-message", data => {  // Listen for incoming chat messages from s
 theme.addEventListener("change",()=>{  //Love this feature :D
   wallpaper.style.backgroundImage=`url("wallpapers/${theme.value}")`;
 });
+
+
+function getISTTime() {
+  return new Date().toLocaleTimeString("en-IN", {
+    timeZone: "Asia/Kolkata",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false
+  });
+}

@@ -20,7 +20,7 @@ io.on("connection", (socket) => {
     io.emit("chat-message", {
       id: socket.id,      // Sender's socket ID
       message: msg,  // The chat message
-      time: new Date().toLocaleTimeString()  // Add timestamp to the message
+      // time: new Date().toLocaleTimeString()  // Add timestamp to the message
     });
   });
 });
